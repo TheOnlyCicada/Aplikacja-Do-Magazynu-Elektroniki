@@ -1,0 +1,74 @@
+﻿<Window x:Class="AplikacjaDoMagazynu.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AplikacjaDoMagazynu"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="507" Width="918"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid Margin="10,0,633,109" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="64*" />
+                <RowDefinition Height="64*" />
+                <RowDefinition Height="64*" />
+                <RowDefinition Height="64*" />
+                <RowDefinition Height="64*" />
+                <RowDefinition Height="64*" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Nazwa" HorizontalAlignment="Center" Height="26" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="NameTextBox" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" Width="120" Height="18" VerticalAlignment="Center"/>
+
+            <Label Grid.Row="1" Grid.Column="0" Content="Ilosc" HorizontalAlignment="Center" Height="26" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="AmountTextBox" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" />
+
+            <Label Grid.Row="2" Grid.Column="0" Content="Typ" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ComboBox Grid.Row="2" Grid.Column="1" x:Name="TypeComboBox" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" />
+
+            <Label Grid.Row="3" Grid.Column="0" Content="lokalizacja" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="3" Grid.Column="1" x:Name="LocationTextBox" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" />
+
+            <Label Grid.Row="4" Grid.Column="0" Content="notatki" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="4" Grid.Column="1" x:Name="NotesTextBox" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" />
+            
+            <Button Grid.Row="6" Grid.Column="1" Content="Dodaj" HorizontalAlignment="Center" Click="Button_Click" Width="103" Height="42" VerticalAlignment="Center"/>
+        
+        </Grid>
+
+        <DataGrid x:Name="ItemsDataGrid" HorizontalAlignment="Left" AutoGenerateColumns="False" Height="471" VerticalAlignment="Center" Width="589" Margin="319,0,0,0" IsReadOnly="True">
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="Nazwa" Binding="{Binding Path=Name}" MinWidth="100" />
+                <DataGridTextColumn Header="Ilosc" Binding="{Binding Path=Quantity}" MinWidth="50" />
+                <DataGridTextColumn Header="Typ" Binding="{Binding Path=Type}" MinWidth="50" />
+                <DataGridTextColumn Header="Lokalizacja" Binding="{Binding Path=Location}" MinWidth="100" />
+                <DataGridTextColumn Header="Notatki" Binding="{Binding Path=Notes}" MinWidth="189" />
+
+                <DataGridTemplateColumn Header="Usuń" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="DeleteEntry">Usuń</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Edytuj" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="EditEntry">Edytuj</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBlock x:Name="DebugTextBlock" HorizontalAlignment="Left" Margin="41,233,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="140" Width="244" Grid.ColumnSpan="2" Visibility="Hidden"/>
+
+    </Grid>
+</Window>
