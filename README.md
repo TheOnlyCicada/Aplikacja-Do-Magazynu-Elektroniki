@@ -1,0 +1,1 @@
+# Aplikacja-Do-Magazynu-Elektroniki
